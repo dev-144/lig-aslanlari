@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- SEO + PREVIEW -->
-<meta name="description" content="Mağaza performanslarının lig bazlı canlı takip edildiği yarışma paneli.">
-<meta property="og:title" content="🏆 Lig Aslanları - Canlı Ciro Yarışması">
-<meta property="og:description" content="Tüm mağazaların lig bazlı sıralamasını canlı takip edin.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Lig+Aslanlari">
-<meta property="og:url" content="">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🏆 Lig Aslanları · Canlı Ciro Paneli</title>
@@ -156,7 +149,7 @@
 
         // ---------- GÜNCEL CİRO VERİLERİ (TL) ----------
         const revenueData = {
-            'Manisa Novada Akhisar': 55017, 'Erzincan Park': 54452, 'İstanbul Atlaspark': 52497,
+            'HT 53': 385762, 'Manisa Novada Akhisar': 55017, 'Erzincan Park': 54452, 'İstanbul Atlaspark': 52497,
             'Kahramanmaraş Piazza': 47239, 'Samsun Piazza': 46104, 'İstanbul Neomarin AVM': 40652,
             'İstanbul City Center': 37396, 'İzmir West Park': 35609, 'Balıkesir 10 Burda': 34666,
             'Karaman Park': 34446, 'Ankara Antares AVM': 33950, 'Kayseri Forum AVM': 33172,
@@ -270,7 +263,8 @@
         renderLeague('bronzeList', bronze, TARGETS['D'], false);
 
         // KPI Hesapla
-        const totalRevenue = stores.reduce((a,b)=>a+b.weeklyRevenue,0);
+        // 👇 BU RAKAMI İSTEDİĞİNİZ GİBİ DEĞİŞTİRİN (TL cinsinden)
+        const totalRevenue = 2127476; // Örnek: 1.250.000 ₺
         const achievers = stores.filter(s => s.weeklyTarget > 0 && (s.weeklyRevenue / s.weeklyTarget) >= 1).length;
         const avgProgress = stores.length ? stores.reduce((a,b)=>a+(b.weeklyTarget>0?(b.weeklyRevenue/b.weeklyTarget)*100:0),0)/stores.length : 0;
         
