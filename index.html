@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -27,7 +26,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 6px 10px;
+            padding: 8px 12px;
             border-radius: 10px;
             background: #ffffff;
             border: 1px solid #f1f5f9;
@@ -65,34 +64,30 @@
         </div>
     </div>
 
-    <!-- KPI (Sadece 2 kart) -->
+    <!-- KPI (2 kart) -->
     <div class="grid grid-cols-2 gap-5" id="kpiContainer"></div>
 
     <!-- 4 LİG SÜTUNU -->
     <div class="grid grid-cols-4 gap-5">
         <div class="bg-white rounded-2xl p-4 card-shadow border-soft flex flex-col platinum-border">
             <div class="flex items-center gap-2 mb-3"><span class="text-2xl">💎</span><h3 class="font-outfit text-xl font-bold text-gray-800">PLATİN LİG</h3><span class="ml-auto text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full font-medium" id="platinumCount">0 Mağaza</span></div>
-            <div class="text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Hedef / Başarı</span></div>
+            <div class="text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
             <div id="platinumList" class="space-y-0.5"></div>
-            <div class="mt-3 text-center text-xs font-medium text-gray-500 border-t border-gray-100 pt-3" id="platinumAvg">🏆 Haftalık Hedef Ort: 219K ₺</div>
         </div>
         <div class="bg-white rounded-2xl p-4 card-shadow border-soft flex flex-col gold-border">
             <div class="flex items-center gap-2 mb-3"><span class="text-2xl">🥇</span><h3 class="font-outfit text-xl font-bold text-gray-800">ALTIN LİG</h3><span class="ml-auto text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full font-medium" id="goldCount">0 Mağaza</span></div>
-            <div class="text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Hedef / Başarı</span></div>
+            <div class="text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
             <div id="goldList" class="space-y-0.5"></div>
-            <div class="mt-3 text-center text-xs font-medium text-gray-500 border-t border-gray-100 pt-3" id="goldAvg">🏆 Haftalık Hedef Ort: 165K ₺</div>
         </div>
         <div class="bg-white rounded-2xl p-4 card-shadow border-soft flex flex-col silver-border">
             <div class="flex items-center gap-2 mb-3"><span class="text-2xl">🥈</span><h3 class="font-outfit text-xl font-bold text-gray-800">GÜMÜŞ LİG</h3><span class="ml-auto text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full font-medium" id="silverCount">0 Mağaza</span></div>
-            <div class="text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Hedef / Başarı</span></div>
+            <div class="text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
             <div id="silverList" class="space-y-0.5"></div>
-            <div class="mt-3 text-center text-xs font-medium text-gray-500 border-t border-gray-100 pt-3" id="silverAvg">🏆 Haftalık Hedef Ort: 108K ₺</div>
         </div>
         <div class="bg-white rounded-2xl p-4 card-shadow border-soft flex flex-col bronze-border">
             <div class="flex items-center gap-2 mb-3"><span class="text-2xl">🥉</span><h3 class="font-outfit text-xl font-bold text-gray-800">BRONZ LİG</h3><span class="ml-auto text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full font-medium" id="bronzeCount">0 Mağaza</span></div>
-            <div class="text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Hedef / Başarı</span></div>
+            <div class="text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
             <div id="bronzeList" class="space-y-0.5"></div>
-            <div class="mt-3 text-center text-xs font-medium text-gray-500 border-t border-gray-100 pt-3" id="bronzeAvg">🚀 Haftalık Hedef Ort: 77K ₺ · Akademi dahil</div>
         </div>
     </div>
 
@@ -145,7 +140,7 @@
 
         const TARGETS = { 'A': 219000, 'B': 165000, 'C': 108000, 'D': 77000 };
 
-        // Güncel ciro verileri (sadece hedef hesaplama için)
+        // Güncel ciro verileri (yüzde hesaplama için)
         const newRevenueData = {
             'İstanbul Kale Center Outlet': 1052186, 'Erzincan Park': 84688, 'Ankara Optimum': 84560,
             'İstanbul Atlaspark': 70794, 'Manisa Magnesia': 69676, 'Gaziantep Forum': 69235,
@@ -182,7 +177,6 @@
             'Balıkesir Edremit Kipa': 700
         };
         
-        // Eski veriler (trend için)
         const oldRevenueData = {
             'Adana 01 Burda': 15430, 'Antalya Özdilek Park': 17193, 'Antalya Agora': 13729,
             'Gaziantep Forum': 28147, 'Hatay İskenderun Primemall': 30496, 'Hatay İskenderun Forbes AVM': 15394,
@@ -246,10 +240,7 @@
         const silver = stores.filter(s => s.league === 'C').sort((a,b) => b.weeklyRevenue - a.weeklyRevenue);
         const bronze = stores.filter(s => s.league === 'D').sort((a,b) => b.weeklyRevenue - a.weeklyRevenue);
 
-        function formatMoney(v) { return v.toLocaleString('tr-TR') + ' ₺'; }
-        function formatK(v) { return (v/1000).toFixed(0) + 'K'; }
-
-        function renderLeague(containerId, storesArray, leagueTarget, isTopLeague = false) {
+        function renderLeague(containerId, storesArray, isTopLeague = false) {
             const container = document.getElementById(containerId);
             let html = '';
             storesArray.forEach((s, idx) => {
@@ -268,13 +259,12 @@
                 
                 html += `
                     <div class="store-row ${rowBg}">
-                        <span class="text-xs font-medium truncate ${isTop ? 'text-amber-700' : 'text-gray-700'}" style="max-width: 150px;" title="${s.name}">
+                        <span class="text-xs font-medium truncate ${isTop ? 'text-amber-700' : 'text-gray-700'}" style="max-width: 180px;" title="${s.name}">
                             ${idx+1}. ${s.name}${academyBadge}${targetAchievedStar} ${trendIcon}
                         </span>
-                        <div class="flex items-center gap-2">
-                            <span class="text-[10px] font-medium text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">${formatK(leagueTarget)}K</span>
-                            <span class="text-xs font-bold text-gray-800 w-16 text-right">%${progress.toFixed(0)}</span>
-                            <div class="w-12 bg-gray-200 h-1.5 rounded-full overflow-hidden">
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-bold text-gray-800 w-14 text-right">%${progress.toFixed(0)}</span>
+                            <div class="w-16 bg-gray-200 h-1.5 rounded-full overflow-hidden">
                                 <div class="bg-blue-500 h-1.5 rounded-full" style="width:${progress}%"></div>
                             </div>
                         </div>
@@ -283,15 +273,13 @@
             });
             container.innerHTML = html;
             
-            const avgTarget = storesArray.length ? storesArray.reduce((a,b)=>a+b.weeklyTarget,0)/storesArray.length : leagueTarget;
             document.getElementById(containerId.replace('List','Count')).textContent = storesArray.length + ' Mağaza';
-            document.getElementById(containerId.replace('List','Avg')).innerHTML = `🏆 Haftalık Hedef Ort: ${formatK(avgTarget)}K ₺`;
         }
 
-        renderLeague('platinumList', platinum, TARGETS['A'], true);
-        renderLeague('goldList', gold, TARGETS['B'], true);
-        renderLeague('silverList', silver, TARGETS['C'], false);
-        renderLeague('bronzeList', bronze, TARGETS['D'], false);
+        renderLeague('platinumList', platinum, true);
+        renderLeague('goldList', gold, true);
+        renderLeague('silverList', silver, false);
+        renderLeague('bronzeList', bronze, false);
 
         const achievers = stores.filter(s => s.weeklyTarget > 0 && (s.weeklyRevenue / s.weeklyTarget) >= 1).length;
         const avgProgress = stores.length ? stores.reduce((a,b)=>a+(b.weeklyTarget>0?(b.weeklyRevenue/b.weeklyTarget)*100:0),0)/stores.length : 0;
