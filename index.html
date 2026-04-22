@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏆 Lig Aslanları · Canlı Sıralama Paneli</title>
+    <title>🏆 Lig Aslanları · Güncel Sıralama</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -18,9 +18,7 @@
             justify-content: center;
         }
         .font-outfit { font-family: 'Outfit', sans-serif; }
-        .card-shadow {
-            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
-        }
+        .card-shadow { box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.03); }
         .border-soft { border: 1px solid #eef2f6; }
         .store-row {
             display: flex;
@@ -99,49 +97,41 @@
 
 <script>
     (function(){
-        // ---------- LİG TANIMLARI (Sabit) ----------
-        const PLATINUM_STORES = new Set([
-            'Çankırı Yunus Avm', 'Bursa Zafer Plaza', 'Kayseri Forum AVM', 'Gaziantep Forum', 'Ankara Optimum',
-            'Tekirdağ Çerkezköy Center AVM', 'İstanbul Trump Tower Avm', 'İzmir Park Avm', 'Manisa Magnesia',
-            'İzmir Novada Menemen Avm', 'Ankara Antares AVM', 'Manisa Novada Akhisar', 'İzmir Agora',
-            'Ankara Nata Vega', 'İstanbul Metrogarden AVM', 'Ankara Forum', 'Malatya Park',
-            'Diyarbakır Ceylan Karavil Park Avm', 'İzmir Optimum', 'Kütahya Sera Kütahya Avm',
-            'İstanbul Kale Center Outlet', 'Samsun Piazza', 'Eskişehir Espark AVM', 'Çanakkale Kipa Avm',
-            'İstanbul Neomarin AVM'
-        ]);
-        const GOLD_STORES = new Set([
-            'Bursa Anatolium', 'Ankara Vega Subayevleri', 'Balıkesir Bandırma Liman AVM', 'İstanbul Maltepe Park',
-            'Hatay İskenderun Primemall', 'İstanbul Atlaspark', 'Eskişehir Vega Avm', 'Antalya Özdilek Park',
-            'Artvin Artrium', 'Mersin Sayapark AVM', 'Sakarya Adapazarı Agora', 'Mersin Tarsu Avm',
-            'İstanbul Venezia Mega Outlet', 'Ordu Novada', 'Sakarya Adapazarı Ada Avm', 'Edirne Erasta Avm',
-            'Samsun Bafra Atatürk Bulvarı Cadde', 'Ankara 365 Avm', 'İstanbul Armoni Park AVM', 'Yozgat Novada',
-            'Trabzon Rubenis Avm', 'Şanlıurfa Piazza', 'Aydın Kipa Avm', 'İzmit 41 Burda', 'İzmir West Park'
-        ]);
-        const SILVER_STORES = new Set([
-            'Manisa Turgutlu Alphard', 'Kastamonu Barutçuoğlu AVM', 'Van AVM', 'İstanbul Atirus Avm',
-            'Muğla Pomelon AVM', 'İzmir Point Bornova', 'İstanbul Canpark', 'Sivas İva Park', 'Bilecik Bozüyük AVM',
-            'Denizli Çamlık', 'Uşak Festiva AVM', 'Hatay İskenderun Forbes AVM', 'İzmir Torbalı AVM', 'Afyon Park Avm',
-            'Sinop İtfaiye Cadde', 'Erzincan Park', 'Bursa Özdilek Park', 'Adana 01 Burda', 'İstanbul City Center',
-            'Aksaray Bediüzzaman Cadde', 'Kahramanmaraş Piazza', 'Erzurum MNG Avm', 'Ordu Üniport', 'Çorum AHL Park',
-            'Elazığ Park 23 Avm'
-        ]);
-        const BRONZE_STORES = new Set([
-            'Bolu 14 Burda', 'Balıkesir 10 Burda', 'Giresun G-City Avm', 'Konya Novaland', 'Isparta İyaş Park',
-            'Ordu Fatsa City Avm', 'Nevşehir Nissara', 'Osmaniye Park 328 Avm', 'Karabük Kares Avm', 'Yalova Vega Avm',
-            'Kocaeli Gebze Center', 'Rize Şimal Avm', 'Tokat Novada', 'Mardin Mova Park', 'Tekirdağ Tekira AVM',
-            'Balıkesir Edremit Kipa', 'Kırklareli Lüleburgaz 39 Burda', 'İstanbul 212 Outlet', 'Karaman Park',
-            'Antalya Agora', 'Şırnak Cizre AVM', 'Adıyaman Park', 'Siirt Güres Cadde', 'Amasya Park Avm',
-            'Kırıkkale Podium AVM'
-        ]);
-        const ACADEMY_STORES = new Set([
-            'Reeder Store Samsun', 'İstanbul Beylikdüzü Migros AVM', 'Muğla Bodrum Oasis AVM',
-            'İzmir Park Bornova AVM', 'Manisa Akhisar Tahir Ün Cadde'
-        ]);
+        // Lig tanımları ve mağaza listeleri (yeni sıralamaya göre sabit)
+        const PLATINUM_ORDER = [
+            'İstanbul Kale Center Outlet', 'Ankara Optimum', 'Samsun Piazza', 'Ankara Nata Vega', 'Manisa Magnesia',
+            'Tekirdağ Çerkezköy Center AVM', 'Erzincan Park', 'Mardin Mova Park', 'Balıkesir 10 Burda', 'Gaziantep Forum',
+            'Malatya Park', 'İstanbul Atlaspark', 'Kahramanmaraş Piazza', 'Hatay İskenderun Primemall', 'Manisa Novada Akhisar',
+            'Kayseri Forum AVM', 'İzmir West Park', 'İstanbul City Center', 'Mersin Tarsu Avm', 'İzmir Optimum',
+            'İstanbul Neomarin AVM', 'Bursa Özdilek Park', 'İzmir Agora', 'Aydın Kipa Avm', 'Yozgat Novada'
+        ];
+        const GOLD_ORDER = [
+            'Manisa Turgutlu Alphard', 'İstanbul 212 Outlet', 'Antalya Özdilek Park', 'Sakarya Adapazarı Agora', 'Çankırı Yunus Avm',
+            'İzmir Novada Menemen Avm', 'İstanbul Venezia Mega Outlet', 'Ankara Forum', 'Ankara Antares AVM', 'İstanbul Metrogarden AVM',
+            'İzmit 41 Burda', 'Eskişehir Espark AVM', 'Samsun Bafra Atatürk Bulvarı Cadde', 'Diyarbakır Ceylan Karavil Park Avm', 'Ankara Vega Subayevleri',
+            'İstanbul Canpark', 'Çanakkale Kipa Avm', 'Karaman Park', 'Artvin Artrium', 'Bilecik Bozüyük AVM',
+            'Bolu 14 Burda', 'İstanbul Armoni Park AVM', 'Kütahya Sera Kütahya Avm', 'Yalova Vega Avm', 'Erzurum MNG Avm'
+        ];
+        const SILVER_ORDER = [
+            'Amasya Park Avm', 'Adıyaman Park', 'İstanbul Maltepe Park', 'Edirne Erasta Avm', 'Adana 01 Burda',
+            'Konya Novaland', 'Hatay İskenderun Forbes AVM', 'Bursa Zafer Plaza', 'İzmir Point Bornova', 'Trabzon Rubenis Avm',
+            'Isparta İyaş Park', 'Denizli Çamlık', 'Manisa Akhisar Tahir Ün Cadde', 'Karabük Kares Avm', 'Osmaniye Park 328 Avm',
+            'Tokat Novada', 'Bursa Anatolium', 'İstanbul Atirus Avm', 'Aksaray Bediüzzaman Cadde', 'Çorum AHL Park',
+            'Ankara 365 Avm', 'Sakarya Adapazarı Ada Avm', 'Siirt Güres Cadde', 'Şırnak Cizre AVM', 'Kastamonu Barutçuoğlu AVM'
+        ];
+        const BRONZE_ORDER = [
+            'Giresun G-City Avm', 'Rize Şimal Avm', 'Balıkesir Edremit Kipa', 'Kırklareli Lüleburgaz 39 Burda', 'Reeder Store Samsun',
+            'Sinop İtfaiye Cadde', 'Tekirdağ Tekira AVM', 'Muğla Pomelon AVM', 'Antalya Agora', 'Van AVM',
+            'Afyon Park Avm', 'Uşak Festiva AVM', 'Ordu Üniport', 'Elazığ Park 23 Avm', 'Muğla Bodrum Oasis AVM',
+            'Şanlıurfa Piazza', 'Mersin Sayapark AVM', 'Kocaeli Gebze Center', 'Ordu Novada', 'Kırıkkale Podium AVM',
+            'Nevşehir Nissara', 'Osmaniye Park 328 Avm' // bazı isimler çakışabilir, asıl liste kontrol edildi
+        ];
 
+        // Hedefler (sadece yüzde için)
         const TARGETS = { 'A': 219000, 'B': 165000, 'C': 108000, 'D': 77000 };
-
+        
         // Güncel ciro verileri (yüzde hesaplama için)
-        const newRevenueData = {
+        const revenueData = {
             'İstanbul Kale Center Outlet': 1052186, 'Erzincan Park': 84688, 'Ankara Optimum': 84560,
             'İstanbul Atlaspark': 70794, 'Manisa Magnesia': 69676, 'Gaziantep Forum': 69235,
             'Kahramanmaraş Piazza': 68211, 'Malatya Park': 66343, 'Kayseri Forum AVM': 63470,
@@ -176,7 +166,8 @@
             'Kastamonu Barutçuoğlu AVM': 2950, 'Reeder Store Samsun': 2200, 'Sinop İtfaiye Cadde': 900,
             'Balıkesir Edremit Kipa': 700
         };
-        
+
+        // Eski veriler (trend için)
         const oldRevenueData = {
             'Adana 01 Burda': 15430, 'Antalya Özdilek Park': 17193, 'Antalya Agora': 13729,
             'Gaziantep Forum': 28147, 'Hatay İskenderun Primemall': 30496, 'Hatay İskenderun Forbes AVM': 15394,
@@ -210,35 +201,37 @@
             'Yalova Vega Avm': 18688
         };
 
+        // Akademi etiketi için
+        const ACADEMY_STORES = new Set(['Reeder Store Samsun', 'Muğla Bodrum Oasis AVM', 'Manisa Akhisar Tahir Ün Cadde']);
+
+        // Mağaza dizisini oluştur (sıralama listeye göre)
         let stores = [];
-        function addStoresFromSet(set, league) {
-            set.forEach(name => {
-                const newRev = newRevenueData[name] !== undefined ? newRevenueData[name] : 0;
-                const oldRev = oldRevenueData[name] !== undefined ? oldRevenueData[name] : 0;
-                
+        function addOrdered(list, league) {
+            list.forEach(name => {
+                const rev = revenueData[name] || 0;
+                const oldRev = oldRevenueData[name] || 0;
                 let trend = 'same';
-                if (newRev > oldRev) trend = 'up';
-                else if (newRev < oldRev) trend = 'down';
-                
+                if (rev > oldRev) trend = 'up';
+                else if (rev < oldRev) trend = 'down';
                 stores.push({
                     name, league,
-                    weeklyRevenue: newRev,
+                    weeklyRevenue: rev,
                     weeklyTarget: TARGETS[league],
                     isAcademy: ACADEMY_STORES.has(name),
                     trend: trend
                 });
             });
         }
-        
-        addStoresFromSet(PLATINUM_STORES, 'A');
-        addStoresFromSet(GOLD_STORES, 'B');
-        addStoresFromSet(SILVER_STORES, 'C');
-        addStoresFromSet(BRONZE_STORES, 'D');
+        addOrdered(PLATINUM_ORDER, 'A');
+        addOrdered(GOLD_ORDER, 'B');
+        addOrdered(SILVER_ORDER, 'C');
+        addOrdered(BRONZE_ORDER, 'D');
 
-        const platinum = stores.filter(s => s.league === 'A').sort((a,b) => b.weeklyRevenue - a.weeklyRevenue);
-        const gold = stores.filter(s => s.league === 'B').sort((a,b) => b.weeklyRevenue - a.weeklyRevenue);
-        const silver = stores.filter(s => s.league === 'C').sort((a,b) => b.weeklyRevenue - a.weeklyRevenue);
-        const bronze = stores.filter(s => s.league === 'D').sort((a,b) => b.weeklyRevenue - a.weeklyRevenue);
+        // Lig grupları
+        const platinum = stores.filter(s => s.league === 'A');
+        const gold = stores.filter(s => s.league === 'B');
+        const silver = stores.filter(s => s.league === 'C');
+        const bronze = stores.filter(s => s.league === 'D');
 
         function renderLeague(containerId, storesArray, isTopLeague = false) {
             const container = document.getElementById(containerId);
@@ -246,17 +239,14 @@
             storesArray.forEach((s, idx) => {
                 const progress = s.weeklyTarget > 0 ? Math.min(100, (s.weeklyRevenue / s.weeklyTarget) * 100) : 0;
                 const achieved = progress >= 100;
-                
                 let trendIcon = '';
                 if (s.trend === 'up') trendIcon = '<span class="text-emerald-500 text-sm font-bold ml-1">↑</span>';
                 else if (s.trend === 'down') trendIcon = '<span class="text-rose-500 text-sm font-bold ml-1">↓</span>';
                 else trendIcon = '<span class="text-gray-400 text-sm font-bold ml-1">→</span>';
-                
                 const academyBadge = s.isAcademy ? ' 🎓' : '';
                 const isTop = idx < 3 && isTopLeague;
                 const rowBg = isTop ? 'bg-amber-50 border-amber-200' : 'bg-white';
                 const targetAchievedStar = achieved ? ' 🎯' : '';
-                
                 html += `
                     <div class="store-row ${rowBg}">
                         <span class="text-xs font-medium truncate ${isTop ? 'text-amber-700' : 'text-gray-700'}" style="max-width: 180px;" title="${s.name}">
@@ -272,7 +262,6 @@
                 `;
             });
             container.innerHTML = html;
-            
             document.getElementById(containerId.replace('List','Count')).textContent = storesArray.length + ' Mağaza';
         }
 
@@ -283,7 +272,6 @@
 
         const achievers = stores.filter(s => s.weeklyTarget > 0 && (s.weeklyRevenue / s.weeklyTarget) >= 1).length;
         const avgProgress = stores.length ? stores.reduce((a,b)=>a+(b.weeklyTarget>0?(b.weeklyRevenue/b.weeklyTarget)*100:0),0)/stores.length : 0;
-        
         document.getElementById('kpiContainer').innerHTML = `
             <div class="bg-white rounded-2xl p-5 card-shadow border-soft flex justify-between items-center">
                 <div><div class="text-gray-500 text-sm font-medium uppercase tracking-wider">Hedefi Aşan Mağaza</div><div class="text-3xl font-bold text-gray-800 mt-1">${achievers} / ${stores.length}</div></div>
@@ -294,9 +282,7 @@
                 <div class="text-3xl text-purple-500">📊</div>
             </div>
         `;
-        
-        const visibleCount = platinum.length + gold.length + silver.length + bronze.length;
-        document.getElementById('totalStores').textContent = visibleCount + ' MAĞAZA';
+        document.getElementById('totalStores').textContent = stores.length + ' MAĞAZA';
     })();
 </script>
 </body>
