@@ -1,387 +1,383 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>🏆 Lig Aslanları · Mobil Uyumlu Liderlik Tablosu</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f4f7fc;
-            min-height: 100vh;
-        }
-        .font-outfit { font-family: 'Outfit', sans-serif; }
-        .card-shadow {
-            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
-        }
-        .border-soft { border: 1px solid #eef2f6; }
-        .store-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 10px;
-            border-radius: 12px;
-            background: #ffffff;
-            border: 1px solid #f1f5f9;
-            margin-bottom: 5px;
-            transition: all 0.15s;
-            gap: 8px;
-        }
-        .store-row:hover { border-color: #cbd5e1; box-shadow: 0 4px 8px -4px rgba(0,0,0,0.05); }
-        .platinum-border { border-top: 4px solid #94a3b8; }
-        .gold-border { border-top: 4px solid #eab308; }
-        .silver-border { border-top: 4px solid #94a3b8; }
-        .bronze-border { border-top: 4px solid #b45309; }
-
-        /* Genel lider çerçevesi (Kale Center) */
-        .top-leader {
-            border: 2px solid #3b82f6 !important;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), inset 0 0 5px rgba(59, 130, 246, 0.2) !important;
-            background: #f0f9ff !important;
-        }
-
-        /* Responsive düzenlemeler */
-        @media (max-width: 640px) {
-            .store-row {
-                flex-wrap: wrap;
-                gap: 4px;
-            }
-            .store-name {
-                max-width: 100% !important;
-            }
-            .progress-area {
-                width: 100%;
-                justify-content: space-between;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>🏆 Lig Aslanları · MVP Paneli</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f7fc;
+      min-height: 100vh;
+    }
+    .font-outfit { font-family: 'Outfit', sans-serif; }
+    .card-shadow { box-shadow: 0 8px 20px -6px rgba(0,0,0,0.05), 0 4px 12px -2px rgba(0,0,0,0.03); }
+    .border-soft { border: 1px solid #eef2f6; }
+    .store-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid #f1f5f9;
+      margin-bottom: 5px;
+      transition: all 0.15s;
+      gap: 8px;
+    }
+    .store-row:hover { border-color: #cbd5e1; box-shadow: 0 4px 8px -4px rgba(0,0,0,0.05); }
+    .platinum-border { border-top: 4px solid #94a3b8; }
+    .gold-border { border-top: 4px solid #eab308; }
+    .silver-border { border-top: 4px solid #94a3b8; }
+    .bronze-border { border-top: 4px solid #b45309; }
+    .top-leader {
+      border: 2px solid #3b82f6 !important;
+      box-shadow: 0 0 15px rgba(59,130,246,0.5), inset 0 0 5px rgba(59,130,246,0.2) !important;
+      background: #f0f9ff !important;
+    }
+    @media (max-width: 640px) {
+      .store-row { flex-wrap: wrap; gap: 4px; }
+      .store-name { max-width: 100% !important; }
+      .progress-area { width: 100%; justify-content: space-between; }
+    }
+  </style>
 </head>
 <body class="antialiased p-3 md:p-5">
 <div class="w-full max-w-[1800px] mx-auto flex flex-col gap-4 md:gap-5">
-    
-    <!-- HEADER (Responsive) -->
-    <div class="flex flex-col md:flex-row md:justify-between md:items-end border-b border-gray-200 pb-4 gap-4">
-        <div>
-            <h1 class="font-outfit text-3xl md:text-5xl font-extrabold tracking-tight text-[#0f1825]">🏆 LİG ASLANLARI</h1>
-            <div class="flex items-center gap-2 mt-1.5 flex-wrap">
-                <span class="flex items-center gap-1">
-                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                    <span class="text-gray-600 text-xs md:text-base font-medium">CANLI SIRALAMA</span>
-                </span>
-                <span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full text-xs font-semibold border border-blue-200">2025 SEZONU</span>
-            </div>
-        </div>
-        <div class="flex items-center gap-2 md:gap-4 bg-white rounded-2xl px-4 py-2 md:px-6 md:py-3 card-shadow border-soft overflow-x-auto text-sm md:text-base">
-            <div class="text-center flex-shrink-0"><div class="text-blue-600 text-[10px] md:text-xs font-bold uppercase">YARIŞMA</div><div class="text-gray-800 font-bold">20.04 – 26.04</div></div>
-            <div class="w-px h-6 bg-gray-200"></div>
-            <div class="text-center flex-shrink-0"><div class="text-purple-600 text-[10px] md:text-xs font-bold uppercase">YARI FİNAL</div><div class="text-gray-800 font-bold">27.04 – 28.04</div></div>
-            <div class="w-px h-6 bg-gray-200"></div>
-            <div class="text-center flex-shrink-0"><div class="text-amber-600 text-[10px] md:text-xs font-bold uppercase">FİNAL</div><div class="text-gray-800 font-bold">29.04 – 30.04</div></div>
-        </div>
-    </div>
 
-    <!-- KPI (2 Kart) -->
-    <div class="grid grid-cols-2 gap-3 md:gap-5" id="kpiContainer"></div>
-
-    <!-- 4 LİG GRID (Mobil: 1, Orta: 2, Büyük: 4 sütun) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-        <!-- PLATİN -->
-        <div class="bg-white rounded-2xl p-3 md:p-4 card-shadow border-soft flex flex-col platinum-border">
-            <div class="flex items-center gap-2 mb-2">
-                <span class="text-xl md:text-2xl">💎</span>
-                <h3 class="font-outfit text-lg md:text-xl font-bold text-gray-800">PLATİN LİG</h3>
-            </div>
-            <div class="text-[10px] md:text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
-            <div id="platinumList" class="space-y-1"></div>
-        </div>
-        <!-- ALTIN -->
-        <div class="bg-white rounded-2xl p-3 md:p-4 card-shadow border-soft flex flex-col gold-border">
-            <div class="flex items-center gap-2 mb-2">
-                <span class="text-xl md:text-2xl">🥇</span>
-                <h3 class="font-outfit text-lg md:text-xl font-bold text-gray-800">ALTIN LİG</h3>
-            </div>
-            <div class="text-[10px] md:text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
-            <div id="goldList" class="space-y-1"></div>
-        </div>
-        <!-- GÜMÜŞ -->
-        <div class="bg-white rounded-2xl p-3 md:p-4 card-shadow border-soft flex flex-col silver-border">
-            <div class="flex items-center gap-2 mb-2">
-                <span class="text-xl md:text-2xl">🥈</span>
-                <h3 class="font-outfit text-lg md:text-xl font-bold text-gray-800">GÜMÜŞ LİG</h3>
-            </div>
-            <div class="text-[10px] md:text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
-            <div id="silverList" class="space-y-1"></div>
-        </div>
-        <!-- BRONZ -->
-        <div class="bg-white rounded-2xl p-3 md:p-4 card-shadow border-soft flex flex-col bronze-border">
-            <div class="flex items-center gap-2 mb-2">
-                <span class="text-xl md:text-2xl">🥉</span>
-                <h3 class="font-outfit text-lg md:text-xl font-bold text-gray-800">BRONZ LİG</h3>
-            </div>
-            <div class="text-[10px] md:text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
-            <div id="bronzeList" class="space-y-1"></div>
-        </div>
+  <!-- HEADER -->
+  <div class="flex flex-col md:flex-row md:justify-between md:items-end border-b border-gray-200 pb-4 gap-4">
+    <div>
+      <h1 class="font-outfit text-3xl md:text-5xl font-extrabold tracking-tight text-[#0f1825]">🏆 LİG ASLANLARI</h1>
+      <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+        <span class="flex items-center gap-1">
+          <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+          <span class="text-gray-600 text-xs md:text-base font-medium">CANLI SIRALAMA</span>
+        </span>
+        <span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full text-xs font-semibold border border-blue-200">2026</span>
+      </div>
     </div>
-
-    <div class="flex justify-between items-center text-gray-400 text-[10px] md:text-xs mt-1">
-        <div class="flex gap-3 md:gap-5 flex-wrap">
-            <span class="flex items-center gap-1"><span class="w-2 h-2 bg-amber-400 rounded-full"></span> İlk 3 Sarı Vurgu</span>
-            <span class="flex items-center gap-1"><span class="w-2 h-2 bg-blue-400 rounded-full"></span> ↑↓ Geçen haftaya göre</span>
-            <span class="flex items-center gap-1"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> Genel Lider Çerçevesi</span>
-        </div>
-        <div><span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full border border-gray-200 font-medium">📅 Nisan 2026</span></div>
+    <div class="flex items-center gap-2 md:gap-4 bg-white rounded-2xl px-4 py-2 md:px-6 md:py-3 card-shadow border-soft overflow-x-auto text-sm md:text-base">
+      <div class="text-center flex-shrink-0"><div class="text-blue-600 text-[10px] md:text-xs font-bold uppercase">YARIŞMA</div><div class="text-gray-800 font-bold">20.04 – 26.04</div></div>
+      <div class="w-px h-6 bg-gray-200"></div>
+      <div class="text-center flex-shrink-0"><div class="text-purple-600 text-[10px] md:text-xs font-bold uppercase">YARI FİNAL</div><div class="text-gray-800 font-bold">27.04 – 28.04</div></div>
+      <div class="w-px h-6 bg-gray-200"></div>
+      <div class="text-center flex-shrink-0"><div class="text-amber-600 text-[10px] md:text-xs font-bold uppercase">FİNAL</div><div class="text-gray-800 font-bold">29.04 – 30.04</div></div>
     </div>
+  </div>
+
+  <!-- MVP PANEL (4 lig) -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5" id="mvpContainer"></div>
+
+  <!-- 4 LİG GRID (Mobil uyumlu) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+    <!-- PLATİN -->
+    <div class="bg-white rounded-2xl p-3 md:p-4 card-shadow border-soft flex flex-col platinum-border">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-xl md:text-2xl">💎</span>
+        <h3 class="font-outfit text-lg md:text-xl font-bold text-gray-800">PLATİN LİG</h3>
+      </div>
+      <div class="text-[10px] md:text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
+      <div id="platinumList" class="space-y-1"></div>
+    </div>
+    <!-- ALTIN -->
+    <div class="bg-white rounded-2xl p-3 md:p-4 card-shadow border-soft flex flex-col gold-border">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-xl md:text-2xl">🥇</span>
+        <h3 class="font-outfit text-lg md:text-xl font-bold text-gray-800">ALTIN LİG</h3>
+      </div>
+      <div class="text-[10px] md:text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
+      <div id="goldList" class="space-y-1"></div>
+    </div>
+    <!-- GÜMÜŞ -->
+    <div class="bg-white rounded-2xl p-3 md:p-4 card-shadow border-soft flex flex-col silver-border">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-xl md:text-2xl">🥈</span>
+        <h3 class="font-outfit text-lg md:text-xl font-bold text-gray-800">GÜMÜŞ LİG</h3>
+      </div>
+      <div class="text-[10px] md:text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
+      <div id="silverList" class="space-y-1"></div>
+    </div>
+    <!-- BRONZ -->
+    <div class="bg-white rounded-2xl p-3 md:p-4 card-shadow border-soft flex flex-col bronze-border">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-xl md:text-2xl">🥉</span>
+        <h3 class="font-outfit text-lg md:text-xl font-bold text-gray-800">BRONZ LİG</h3>
+      </div>
+      <div class="text-[10px] md:text-xs text-gray-400 mb-2 flex justify-between px-1"><span>Mağaza</span><span>Başarı</span></div>
+      <div id="bronzeList" class="space-y-1"></div>
+    </div>
+  </div>
+
+  <!-- GENEL GERÇEKLEŞME -->
+  <div class="grid grid-cols-1" id="kpiContainer"></div>
+
+  <div class="flex justify-between items-center text-gray-400 text-[10px] md:text-xs mt-1">
+    <div class="flex gap-3 md:gap-5 flex-wrap">
+      <span class="flex items-center gap-1"><span class="w-2 h-2 bg-amber-400 rounded-full"></span> İlk 3 Sarı Vurgu</span>
+      <span class="flex items-center gap-1"><span class="w-2 h-2 bg-blue-400 rounded-full"></span> ↑↓ Geçen haftaya göre</span>
+      <span class="flex items-center gap-1"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> Genel Lider Çerçevesi</span>
+    </div>
+    <div><span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full border border-gray-200 font-medium">📅 Nisan 2026</span></div>
+  </div>
 </div>
 
 <script>
-    (function(){
-        // ========== SABİT LİG TANIMLARI (DEĞİŞMEZ) ==========
-        const PLATINUM_STORES = new Set([
-            'Çankırı Yunus Avm', 'Bursa Zafer Plaza', 'Kayseri Forum AVM', 'Gaziantep Forum', 'Ankara Optimum',
-            'Tekirdağ Çerkezköy Center AVM', 'İstanbul Trump Tower Avm', 'İzmir Park Avm', 'Manisa Magnesia',
-            'İzmir Novada Menemen Avm', 'Ankara Antares AVM', 'Manisa Novada Akhisar', 'İzmir Agora',
-            'Ankara Nata Vega', 'İstanbul Metrogarden AVM', 'Ankara Forum', 'Malatya Park',
-            'Diyarbakır Ceylan Karavil Park Avm', 'İzmir Optimum', 'Kütahya Sera Kütahya Avm',
-            'İstanbul Kale Center Outlet', 'Samsun Piazza', 'Eskişehir Espark AVM', 'Çanakkale Kipa Avm',
-            'İstanbul Neomarin AVM'
-        ]);
-        const GOLD_STORES = new Set([
-            'Bursa Anatolium', 'Ankara Vega Subayevleri', 'Balıkesir Bandırma Liman AVM', 'İstanbul Maltepe Park',
-            'Hatay İskenderun Primemall', 'İstanbul Atlaspark', 'Eskişehir Vega Avm', 'Antalya Özdilek Park',
-            'Artvin Artrium', 'Mersin Sayapark AVM', 'Sakarya Adapazarı Agora', 'Mersin Tarsu Avm',
-            'İstanbul Venezia Mega Outlet', 'Ordu Novada', 'Sakarya Adapazarı Ada Avm', 'Edirne Erasta Avm',
-            'Samsun Bafra Atatürk Bulvarı Cadde', 'Ankara 365 Avm', 'İstanbul Armoni Park AVM', 'Yozgat Novada',
-            'Trabzon Rubenis Avm', 'Şanlıurfa Piazza', 'Aydın Kipa Avm', 'İzmit 41 Burda', 'İzmir West Park'
-        ]);
-        const SILVER_STORES = new Set([
-            'Manisa Turgutlu Alphard', 'Kastamonu Barutçuoğlu AVM', 'Van AVM', 'İstanbul Atirus Avm',
-            'Muğla Pomelon AVM', 'İzmir Point Bornova', 'İstanbul Canpark', 'Sivas İva Park', 'Bilecik Bozüyük AVM',
-            'Denizli Çamlık', 'Uşak Festiva AVM', 'Hatay İskenderun Forbes AVM', 'İzmir Torbalı AVM', 'Afyon Park Avm',
-            'Sinop İtfaiye Cadde', 'Erzincan Park', 'Bursa Özdilek Park', 'Adana 01 Burda', 'İstanbul City Center',
-            'Aksaray Bediüzzaman Cadde', 'Kahramanmaraş Piazza', 'Erzurum MNG Avm', 'Ordu Üniport', 'Çorum AHL Park',
-            'Elazığ Park 23 Avm'
-        ]);
-        const BRONZE_STORES = new Set([
-            'Bolu 14 Burda', 'Balıkesir 10 Burda', 'Giresun G-City Avm', 'Konya Novaland', 'Isparta İyaş Park',
-            'Ordu Fatsa City Avm', 'Nevşehir Nissara', 'Osmaniye Park 328 Avm', 'Karabük Kares Avm', 'Yalova Vega Avm',
-            'Kocaeli Gebze Center', 'Rize Şimal Avm', 'Tokat Novada', 'Mardin Mova Park', 'Tekirdağ Tekira AVM',
-            'Balıkesir Edremit Kipa', 'Kırklareli Lüleburgaz 39 Burda', 'İstanbul 212 Outlet', 'Karaman Park',
-            'Antalya Agora', 'Şırnak Cizre AVM', 'Adıyaman Park', 'Siirt Güres Cadde', 'Amasya Park Avm',
-            'Kırıkkale Podium AVM'
-        ]);
-        const ACADEMY_STORES = new Set([
-            'Reeder Store Samsun', 'İstanbul Beylikdüzü Migros AVM', 'Muğla Bodrum Oasis AVM',
-            'İzmir Park Bornova AVM', 'Manisa Akhisar Tahir Ün Cadde'
-        ]);
+(function(){
+  // ========== SABİT LİG TANIMLARI (DEĞİŞMEZ) ==========
+  const PLATINUM_STORES = new Set([
+    'Çankırı Yunus Avm','Bursa Zafer Plaza','Kayseri Forum AVM','Gaziantep Forum','Ankara Optimum',
+    'Tekirdağ Çerkezköy Center AVM','İstanbul Trump Tower Avm','İzmir Park Avm','Manisa Magnesia',
+    'İzmir Novada Menemen Avm','Ankara Antares AVM','Manisa Novada Akhisar','İzmir Agora',
+    'Ankara Nata Vega','İstanbul Metrogarden AVM','Ankara Forum','Malatya Park',
+    'Diyarbakır Ceylan Karavil Park Avm','İzmir Optimum','Kütahya Sera Kütahya Avm',
+    'İstanbul Kale Center Outlet','Samsun Piazza','Eskişehir Espark AVM','Çanakkale Kipa Avm',
+    'İstanbul Neomarin AVM'
+  ]);
+  const GOLD_STORES = new Set([
+    'Bursa Anatolium','Ankara Vega Subayevleri','Balıkesir Bandırma Liman AVM','İstanbul Maltepe Park',
+    'Hatay İskenderun Primemall','İstanbul Atlaspark','Eskişehir Vega Avm','Antalya Özdilek Park',
+    'Artvin Artrium','Mersin Sayapark AVM','Sakarya Adapazarı Agora','Mersin Tarsu Avm',
+    'İstanbul Venezia Mega Outlet','Ordu Novada','Sakarya Adapazarı Ada Avm','Edirne Erasta Avm',
+    'Samsun Bafra Atatürk Bulvarı Cadde','Ankara 365 Avm','İstanbul Armoni Park AVM','Yozgat Novada',
+    'Trabzon Rubenis Avm','Şanlıurfa Piazza','Aydın Kipa Avm','İzmit 41 Burda','İzmir West Park'
+  ]);
+  const SILVER_STORES = new Set([
+    'Manisa Turgutlu Alphard','Kastamonu Barutçuoğlu AVM','Van AVM','İstanbul Atirus Avm',
+    'Muğla Pomelon AVM','İzmir Point Bornova','İstanbul Canpark','Sivas İva Park','Bilecik Bozüyük AVM',
+    'Denizli Çamlık','Uşak Festiva AVM','Hatay İskenderun Forbes AVM','İzmir Torbalı AVM','Afyon Park Avm',
+    'Sinop İtfaiye Cadde','Erzincan Park','Bursa Özdilek Park','Adana 01 Burda','İstanbul City Center',
+    'Aksaray Bediüzzaman Cadde','Kahramanmaraş Piazza','Erzurum MNG Avm','Ordu Üniport','Çorum AHL Park',
+    'Elazığ Park 23 Avm'
+  ]);
+  const BRONZE_STORES = new Set([
+    'Bolu 14 Burda','Balıkesir 10 Burda','Giresun G-City Avm','Konya Novaland','Isparta İyaş Park',
+    'Ordu Fatsa City Avm','Nevşehir Nissara','Osmaniye Park 328 Avm','Karabük Kares Avm','Yalova Vega Avm',
+    'Kocaeli Gebze Center','Rize Şimal Avm','Tokat Novada','Mardin Mova Park','Tekirdağ Tekira AVM',
+    'Balıkesir Edremit Kipa','Kırklareli Lüleburgaz 39 Burda','İstanbul 212 Outlet','Karaman Park',
+    'Antalya Agora','Şırnak Cizre AVM','Adıyaman Park','Siirt Güres Cadde','Amasya Park Avm','Kırıkkale Podium AVM'
+  ]);
+  const ACADEMY_STORES = new Set([
+    'Reeder Store Samsun','İstanbul Beylikdüzü Migros AVM','Muğla Bodrum Oasis AVM','İzmir Park Bornova AVM','Manisa Akhisar Tahir Ün Cadde'
+  ]);
 
-        const TARGETS = { 'A': 219000, 'B': 165000, 'C': 108000, 'D': 77000 };
+  const TARGETS = { 'A': 219000, 'B': 165000, 'C': 108000, 'D': 77000 };
 
-        // YENİ CİRO VERİLERİ (Görselde gösterilmeyecek ama hesaplamalarda kullanılacak)
-        const rawRevenueData = {
-            'İstanbul Kale Center Outlet': '1.084.794,00', 'Ankara Optimum': '221.502,00', 'Manisa Magnesia': '177.615,00',
-            'Samsun Piazza': '159.311,00', 'Bursa Zafer Plaza': '153.127,00', 'Kayseri Forum AVM': '150.524,00',
-            'Kahramanmaraş Piazza': '137.203,00', 'Ankara Nata Vega': '136.758,00', 'İstanbul City Center': '135.644,00',
-            'Mersin Tarsu Avm': '133.138,00', 'Çanakkale Kipa Avm': '129.793,00', 'İzmir West Park': '129.788,00',
-            'Gaziantep Forum': '124.560,00', 'Balıkesir 10 Burda': '124.055,00', 'Eskişehir Espark AVM': '123.681,00',
-            'İstanbul Atlaspark': '120.608,00', 'Tekirdağ Çerkezköy Center AVM': '117.502,78', 'Malatya Park': '109.800,00',
-            'İzmir Novada Menemen Avm': '109.099,00', 'Erzincan Park': '108.835,00', 'Manisa Novada Akhisar': '106.454,00',
-            'Mardin Mova Park': '104.018,00', 'Hatay İskenderun Primemall': '99.397,10', 'Ankara Forum': '99.379,00',
-            'Manisa Turgutlu Alphard': '97.684,00', 'İzmir Agora': '96.319,00', 'Antalya Özdilek Park': '94.936,00',
-            'İstanbul Venezia Mega Outlet': '94.913,00', 'İzmir Optimum': '94.788,00', 'İstanbul Neomarin AVM': '93.968,00',
-            'Sakarya Adapazarı Agora': '93.196,00', 'İstanbul 212 Outlet': '89.646,00', 'İstanbul Maltepe Park': '83.361,00',
-            'Tekirdağ Tekira AVM': '83.155,00', 'Ankara Antares AVM': '79.427,00', 'Yozgat Novada': '78.474,00',
-            'Mersin Sayapark AVM': '76.538,00', 'İzmit 41 Burda': '76.420,00', 'İstanbul Trump Tower Avm': '75.187,00',
-            'İstanbul Armoni Park AVM': '74.523,00', 'Çankırı Yunus Avm': '72.851,00', 'Afyon Park Avm': '71.305,00',
-            'Sakarya Adapazarı Ada Avm': '69.843,00', 'Balıkesir Bandırma Liman AVM': '69.809,00', 'Hatay İskenderun Forbes AVM': '68.147,00',
-            'Artvin Artrium': '68.055,00', 'Adıyaman Park': '66.860,00', 'Bursa Özdilek Park': '64.678,00', 'Van AVM': '63.534,00',
-            'İstanbul Metrogarden AVM': '63.386,00', 'Ankara Vega Subayevleri': '63.064,00', 'Muğla Pomelon AVM': '62.643,00',
-            'Karaman Park': '62.369,00', 'İstanbul Canpark': '60.863,00', 'Isparta İyaş Park': '60.761,00', 'Siirt Güres Cadde': '59.780,00',
-            'Şanlıurfa Piazza': '58.173,00', 'Aydın Kipa Avm': '58.145,00', 'Diyarbakır Ceylan Karavil Park Avm': '57.147,00',
-            'Kütahya Sera Kütahya Avm': '52.891,00', 'Bolu 14 Burda': '51.292,00', 'Şırnak Cizre AVM': '51.195,00',
-            'Manisa Akhisar Tahir Ün Cadde': '50.140,00', 'Sivas İva Park': '50.066,00', 'Giresun G-City Avm': '49.082,00',
-            'Samsun Bafra Atatürk Bulvarı Cadde': '48.187,00', 'Trabzon Rubenis Avm': '47.468,00', 'İzmir Point Bornova': '47.242,00',
-            'Antalya Agora': '45.327,00', 'Yalova Vega Avm': '43.532,00', 'Bilecik Bozüyük AVM': '42.742,00', 'Konya Novaland': '42.252,00',
-            'Aksaray Bediüzzaman Cadde': '40.745,00', 'Çorum AHL Park': '39.157,00', 'Ankara 365 Avm': '38.413,00',
-            'Osmaniye Park 328 Avm': '37.821,00', 'Elazığ Park 23 Avm': '36.966,00', 'Ordu Üniport': '35.793,00',
-            'İstanbul Atirus Avm': '35.424,00', 'Edirne Erasta Avm': '34.496,00', 'Erzurum MNG Avm': '33.883,00',
-            'Kocaeli Gebze Center': '33.732,00', 'Tokat Novada': '31.633,00', 'Ordu Novada': '30.980,00', 'Adana 01 Burda': '30.391,00',
-            'Balıkesir Edremit Kipa': '30.162,00', 'Amasya Park Avm': '29.331,00', 'Denizli Çamlık': '28.475,00',
-            'Bursa Anatolium': '27.890,00', 'Muğla Bodrum Oasis AVM': '26.830,00', 'Uşak Festiva AVM': '24.096,00',
-            'Sinop İtfaiye Cadde': '21.853,00', 'Karabük Kares Avm': '20.885,00', 'Rize Şimal Avm': '19.995,00',
-            'Nevşehir Nissara': '16.749,00', 'Kastamonu Barutçuoğlu AVM': '14.893,00', 'Kırklareli Lüleburgaz 39 Burda': '12.198,00',
-            'Reeder Store Samsun': '4.350,00'
-        };
+  // ========== YENİ CİRO VERİLERİ (TL olarak string, nokta ve virgüllü) ==========
+  const rawRevenue = {
+    'İstanbul Kale Center Outlet':'1.155.037','Ankara Optimum':'395.913','İstanbul Trump Tower Avm':'350.059',
+    'Ankara Nata Vega':'236.584','Tekirdağ Çerkezköy Center AVM':'221.245','Manisa Magnesia':'218.015',
+    'Bursa Zafer Plaza':'217.451','Malatya Park':'216.740','Samsun Piazza':'207.844','İzmir Agora':'203.243',
+    'Isparta İyaş Park':'194.751','Ankara Vega Subayevleri':'189.852','Eskişehir Espark AVM':'189.843',
+    'Antalya Özdilek Park':'189.153','Mersin Tarsu Avm':'187.941','Bursa Özdilek Park':'185.779',
+    'İstanbul Atlaspark':'185.155','İstanbul City Center':'183.538','İzmir Optimum':'176.397',
+    'İzmir West Park':'174.330','Kayseri Forum AVM':'173.683','İzmir Novada Menemen Avm':'173.339',
+    'Kahramanmaraş Piazza':'171.143','İstanbul Maltepe Park':'165.769','Balıkesir 10 Burda':'164.524',
+    'Mardin Mova Park':'160.462','Çanakkale Kipa Avm':'154.539','Gaziantep Forum':'154.455',
+    'İstanbul Venezia Mega Outlet':'149.371','Hatay İskenderun Primemall':'146.789','Manisa Turgutlu Alphard':'145.791',
+    'Manisa Novada Akhisar':'142.807','Ankara Forum':'142.301','İstanbul Armoni Park AVM':'137.800',
+    'İstanbul 212 Outlet':'134.369','Diyarbakır Ceylan Karavil Park Avm':'132.642','Sakarya Adapazarı Agora':'131.875',
+    'Erzincan Park':'128.229','İstanbul Canpark':'128.157','Karaman Park':'126.939','Sakarya Adapazarı Ada Avm':'126.679',
+    'Tekirdağ Tekira AVM':'125.425','Çankırı Yunus Avm':'125.394','İstanbul Neomarin AVM':'123.377',
+    'Mersin Sayapark AVM':'118.284','İzmit 41 Burda':'116.987','Ankara Antares AVM':'116.481',
+    'Yozgat Novada':'114.368','Adıyaman Park':'109.466','Elazığ Park 23 Avm':'108.140','Ordu Üniport':'105.141',
+    'Denizli Çamlık':'101.113','Artvin Artrium':'100.631','Balıkesir Edremit Kipa':'99.398','Giresun G-City Avm':'98.694',
+    'Şanlıurfa Piazza':'98.681','Aydın Kipa Avm':'97.867','Bilecik Bozüyük AVM':'97.161','Kütahya Sera Kütahya Avm':'91.636',
+    'Afyon Park Avm':'90.704','Van AVM':'89.728','Kastamonu Barutçuoğlu AVM':'89.032','Yalova Vega Avm':'88.706',
+    'Konya Novaland':'85.520','Bolu 14 Burda':'84.093','Trabzon Rubenis Avm':'82.180','Hatay İskenderun Forbes AVM':'81.097',
+    'Ankara 365 Avm':'79.459','Sivas İva Park':'78.493','Bursa Anatolium':'76.460','Muğla Pomelon AVM':'74.306',
+    'Siirt Güres Cadde':'73.644','Balıkesir Bandırma Liman AVM':'69.889','Edirne Erasta Avm':'68.675',
+    'Manisa Akhisar Tahir Ün Cadde':'67.608','İzmir Point Bornova':'66.441','Çorum AHL Park':'63.734',
+    'İstanbul Metrogarden AVM':'63.386','Aksaray Bediüzzaman Cadde':'61.942','Osmaniye Park 328 Avm':'59.614',
+    'Ordu Novada':'58.756','Samsun Bafra Atatürk Bulvarı Cadde':'57.785','Muğla Bodrum Oasis AVM':'57.654',
+    'Antalya Agora':'56.676','Erzurum MNG Avm':'55.546','Rize Şimal Avm':'54.990','Şırnak Cizre AVM':'54.342',
+    'Amasya Park Avm':'51.276','Sinop İtfaiye Cadde':'50.898','Kocaeli Gebze Center':'49.254','Uşak Festiva AVM':'45.092',
+    'İstanbul Atirus Avm':'44.704','Nevşehir Nissara':'37.946','Adana 01 Burda':'37.137','Tokat Novada':'36.832',
+    'Karabük Kares Avm':'20.885','Kırklareli Lüleburgaz 39 Burda':'12.198','Reeder Store Samsun':'4.350'
+  };
 
-        // Sayısal değerlere çevirme
-        const revenueData = {};
-        let maxRevenue = 0;
-        let topLeaderName = '';
-        Object.entries(rawRevenueData).forEach(([name, val]) => {
-            const num = parseFloat(val.replace(/\./g, '').replace(',', '.'));
-            revenueData[name] = num;
-            if (num > maxRevenue) {
-                maxRevenue = num;
-                topLeaderName = name;
-            }
-        });
+  // Sayısal değere çevir ve en yüksek cirolu lideri bul
+  const revenueData = {};
+  let maxRevenue = 0, topLeaderName = '';
+  Object.entries(rawRevenue).forEach(([name, val]) => {
+    const num = parseFloat(val.replace(/\./g, '').replace(',', '.')); // nokta ve virgülü temizle
+    revenueData[name] = num;
+    if (num > maxRevenue) { maxRevenue = num; topLeaderName = name; }
+  });
 
-        // Eski hafta verileri (trend karşılaştırması için)
-        const oldRevenueData = {
-            'İstanbul Kale Center Outlet': 1052186, 'Erzincan Park': 84688, 'Ankara Optimum': 84560,
-            'İstanbul Atlaspark': 70794, 'Manisa Magnesia': 69676, 'Gaziantep Forum': 69235,
-            'Kahramanmaraş Piazza': 68211, 'Malatya Park': 66343, 'Kayseri Forum AVM': 63470,
-            'Ankara Nata Vega': 61886, 'Samsun Piazza': 61457, 'Manisa Novada Akhisar': 59716,
-            'Hatay İskenderun Primemall': 58882, 'Balıkesir 10 Burda': 57664, 'İstanbul City Center': 55245,
-            'Bursa Özdilek Park': 53379, 'İzmir West Park': 51957, 'İstanbul Neomarin AVM': 51246,
-            'İzmir Optimum': 49480, 'Aydın Kipa Avm': 48247, 'İstanbul 212 Outlet': 47418,
-            'Mersin Tarsu Avm': 45398, 'Ankara Antares AVM': 43550, 'Çankırı Yunus Avm': 40075,
-            'Manisa Turgutlu Alphard': 38693, 'İzmir Agora': 37657, 'Diyarbakır Ceylan Karavil Park Avm': 37301,
-            'Ankara Forum': 36763, 'Ankara Vega Subayevleri': 36522, 'Antalya Özdilek Park': 36243,
-            'Karaman Park': 35175, 'İstanbul Metrogarden AVM': 35009, 'Samsun Bafra Atatürk Bulvarı Cadde': 34293,
-            'İstanbul Venezia Mega Outlet': 33176, 'Eskişehir Espark AVM': 33040, 'İzmit 41 Burda': 32999,
-            'İzmir Novada Menemen Avm': 32996, 'Yozgat Novada': 32492, 'Mardin Mova Park': 31694,
-            'Bilecik Bozüyük AVM': 31444, 'İstanbul Canpark': 30885, 'İstanbul Armoni Park AVM': 30522,
-            'Sakarya Adapazarı Agora': 29243, 'Artvin Artrium': 28161, 'Çanakkale Kipa Avm': 27532,
-            'Erzurum MNG Avm': 27284, 'Edirne Erasta Avm': 25848, 'Tekirdağ Çerkezköy Center AVM': 25697,
-            'Antalya Agora': 25479, 'Van AVM': 25439, 'Konya Novaland': 25249,
-            'Hatay İskenderun Forbes AVM': 24893, 'İstanbul Trump Tower Avm': 24595, 'Yalova Vega Avm': 23988,
-            'Adana 01 Burda': 23780, 'Bolu 14 Burda': 23597, 'İzmir Point Bornova': 23546,
-            'Isparta İyaş Park': 23087, 'İstanbul Maltepe Park': 22990, 'Kütahya Sera Kütahya Avm': 22695,
-            'Afyon Park Avm': 22494, 'Denizli Çamlık': 21347, 'Adıyaman Park': 21095,
-            'Manisa Akhisar Tahir Ün Cadde': 20996, 'Karabük Kares Avm': 20885, 'Şanlıurfa Piazza': 20728,
-            'Sivas İva Park': 20579, 'Amasya Park Avm': 20510, 'Ordu Üniport': 19996,
-            'Tekirdağ Tekira AVM': 19346, 'Muğla Pomelon AVM': 19253, 'Osmaniye Park 328 Avm': 19098,
-            'Bursa Anatolium': 18590, 'Muğla Bodrum Oasis AVM': 17878, 'İstanbul Atirus Avm': 17726,
-            'Aksaray Bediüzzaman Cadde': 16697, 'Trabzon Rubenis Avm': 15648, 'Bursa Zafer Plaza': 15048,
-            'Tokat Novada': 14049, 'Mersin Sayapark AVM': 12598, 'Ankara 365 Avm': 11748,
-            'Balıkesir Bandırma Liman AVM': 11544, 'Ordu Novada': 10949, 'Siirt Güres Cadde': 10396,
-            'Kocaeli Gebze Center': 8399, 'Elazığ Park 23 Avm': 8250, 'Rize Şimal Avm': 6648,
-            'Şırnak Cizre AVM': 6449, 'Giresun G-City Avm': 6427, 'Sakarya Adapazarı Ada Avm': 6410,
-            'Çorum AHL Park': 6324, 'Uşak Festiva AVM': 5098, 'Kırklareli Lüleburgaz 39 Burda': 4999,
-            'Kastamonu Barutçuoğlu AVM': 2950, 'Reeder Store Samsun': 2200, 'Sinop İtfaiye Cadde': 900,
-            'Balıkesir Edremit Kipa': 700
-        };
+  // Eski ciro verileri (trend okları için bir önceki hafta)
+  const oldRevenueData = {
+    'İstanbul Kale Center Outlet':1084794,'Ankara Optimum':221502,'Manisa Magnesia':177615,'Samsun Piazza':159311,
+    'Bursa Zafer Plaza':153127,'Kayseri Forum AVM':150524,'Kahramanmaraş Piazza':137203,'Ankara Nata Vega':136758,
+    'İstanbul City Center':135644,'Mersin Tarsu Avm':133138,'Çanakkale Kipa Avm':129793,'İzmir West Park':129788,
+    'Gaziantep Forum':124560,'Balıkesir 10 Burda':124055,'Eskişehir Espark AVM':123681,'İstanbul Atlaspark':120608,
+    'Tekirdağ Çerkezköy Center AVM':117502,'Malatya Park':109800,'İzmir Novada Menemen Avm':109099,'Erzincan Park':108835,
+    'Manisa Novada Akhisar':106454,'Mardin Mova Park':104018,'Hatay İskenderun Primemall':99397,'Ankara Forum':99379,
+    'Manisa Turgutlu Alphard':97684,'İzmir Agora':96319,'Antalya Özdilek Park':94936,'İstanbul Venezia Mega Outlet':94913,
+    'İzmir Optimum':94788,'İstanbul Neomarin AVM':93968,'Sakarya Adapazarı Agora':93196,'İstanbul 212 Outlet':89646,
+    'İstanbul Maltepe Park':83361,'Tekirdağ Tekira AVM':83155,'Ankara Antares AVM':79427,'Yozgat Novada':78474,
+    'Mersin Sayapark AVM':76538,'İzmit 41 Burda':76420,'İstanbul Trump Tower Avm':75187,'İstanbul Armoni Park AVM':74523,
+    'Çankırı Yunus Avm':72851,'Afyon Park Avm':71305,'Sakarya Adapazarı Ada Avm':69843,'Balıkesir Bandırma Liman AVM':69809,
+    'Hatay İskenderun Forbes AVM':68147,'Artvin Artrium':68055,'Adıyaman Park':66860,'Bursa Özdilek Park':64678,
+    'Van AVM':63534,'İstanbul Metrogarden AVM':63386,'Ankara Vega Subayevleri':63064,'Muğla Pomelon AVM':62643,
+    'Karaman Park':62369,'İstanbul Canpark':60863,'Isparta İyaş Park':60761,'Siirt Güres Cadde':59780,
+    'Şanlıurfa Piazza':58173,'Aydın Kipa Avm':58145,'Diyarbakır Ceylan Karavil Park Avm':57147,'Kütahya Sera Kütahya Avm':52891,
+    'Bolu 14 Burda':51292,'Şırnak Cizre AVM':51195,'Manisa Akhisar Tahir Ün Cadde':50140,'Sivas İva Park':50066,
+    'Giresun G-City Avm':49082,'Samsun Bafra Atatürk Bulvarı Cadde':48187,'Trabzon Rubenis Avm':47468,'İzmir Point Bornova':47242,
+    'Antalya Agora':45327,'Yalova Vega Avm':43532,'Bilecik Bozüyük AVM':42742,'Konya Novaland':42252,'Aksaray Bediüzzaman Cadde':40745,
+    'Çorum AHL Park':39157,'Ankara 365 Avm':38413,'Osmaniye Park 328 Avm':37821,'Elazığ Park 23 Avm':36966,'Ordu Üniport':35793,
+    'İstanbul Atirus Avm':35424,'Edirne Erasta Avm':34496,'Erzurum MNG Avm':33883,'Kocaeli Gebze Center':33732,'Tokat Novada':31633,
+    'Ordu Novada':30980,'Adana 01 Burda':30391,'Balıkesir Edremit Kipa':30162,'Amasya Park Avm':29331,'Denizli Çamlık':28475,
+    'Bursa Anatolium':27890,'Muğla Bodrum Oasis AVM':26830,'Uşak Festiva AVM':24096,'Sinop İtfaiye Cadde':21853,'Karabük Kares Avm':20885,
+    'Rize Şimal Avm':19995,'Nevşehir Nissara':16749,'Kastamonu Barutçuoğlu AVM':14893,'Kırklareli Lüleburgaz 39 Burda':12198,'Reeder Store Samsun':4350
+  };
 
-        // Yeni verilen sıralı liste (büyükten küçüğe, eksikler sona eklenmiş olabilir)
-        const FULL_ORDER = [
-            'İstanbul Kale Center Outlet', 'Ankara Optimum', 'Manisa Magnesia', 'Samsun Piazza', 'Bursa Zafer Plaza',
-            'Kayseri Forum AVM', 'Kahramanmaraş Piazza', 'Ankara Nata Vega', 'İstanbul City Center', 'Mersin Tarsu Avm',
-            'Çanakkale Kipa Avm', 'İzmir West Park', 'Gaziantep Forum', 'Balıkesir 10 Burda', 'Eskişehir Espark AVM',
-            'İstanbul Atlaspark', 'Tekirdağ Çerkezköy Center AVM', 'Malatya Park', 'İzmir Novada Menemen Avm', 'Erzincan Park',
-            'Manisa Novada Akhisar', 'Mardin Mova Park', 'Hatay İskenderun Primemall', 'Ankara Forum', 'Manisa Turgutlu Alphard',
-            'İzmir Agora', 'Antalya Özdilek Park', 'İstanbul Venezia Mega Outlet', 'İzmir Optimum', 'İstanbul Neomarin AVM',
-            'Sakarya Adapazarı Agora', 'İstanbul 212 Outlet', 'İstanbul Maltepe Park', 'Tekirdağ Tekira AVM', 'Ankara Antares AVM',
-            'Yozgat Novada', 'Mersin Sayapark AVM', 'İzmit 41 Burda', 'İstanbul Trump Tower Avm', 'İstanbul Armoni Park AVM',
-            'Çankırı Yunus Avm', 'Afyon Park Avm', 'Sakarya Adapazarı Ada Avm', 'Balıkesir Bandırma Liman AVM', 'Hatay İskenderun Forbes AVM',
-            'Artvin Artrium', 'Adıyaman Park', 'Bursa Özdilek Park', 'Van AVM', 'İstanbul Metrogarden AVM',
-            'Ankara Vega Subayevleri', 'Muğla Pomelon AVM', 'Karaman Park', 'İstanbul Canpark', 'Isparta İyaş Park',
-            'Siirt Güres Cadde', 'Şanlıurfa Piazza', 'Aydın Kipa Avm', 'Diyarbakır Ceylan Karavil Park Avm', 'Kütahya Sera Kütahya Avm',
-            'Bolu 14 Burda', 'Şırnak Cizre AVM', 'Manisa Akhisar Tahir Ün Cadde', 'Sivas İva Park', 'Giresun G-City Avm',
-            'Samsun Bafra Atatürk Bulvarı Cadde', 'Trabzon Rubenis Avm', 'İzmir Point Bornova', 'Antalya Agora', 'Yalova Vega Avm',
-            'Bilecik Bozüyük AVM', 'Konya Novaland', 'Aksaray Bediüzzaman Cadde', 'Çorum AHL Park', 'Ankara 365 Avm',
-            'Osmaniye Park 328 Avm', 'Elazığ Park 23 Avm', 'Ordu Üniport', 'İstanbul Atirus Avm', 'Edirne Erasta Avm',
-            'Erzurum MNG Avm', 'Kocaeli Gebze Center', 'Tokat Novada', 'Ordu Novada', 'Adana 01 Burda',
-            'Balıkesir Edremit Kipa', 'Amasya Park Avm', 'Denizli Çamlık', 'Bursa Anatolium', 'Muğla Bodrum Oasis AVM',
-            'Uşak Festiva AVM', 'Sinop İtfaiye Cadde', 'Karabük Kares Avm', 'Rize Şimal Avm', 'Nevşehir Nissara',
-            'Kastamonu Barutçuoğlu AVM', 'Kırklareli Lüleburgaz 39 Burda', 'Reeder Store Samsun'
-        ];
+  // Yeni verilen sıralı liste (büyükten küçüğe)
+  const FULL_ORDER = [
+    'İstanbul Kale Center Outlet','Ankara Optimum','İstanbul Trump Tower Avm','Ankara Nata Vega','Tekirdağ Çerkezköy Center AVM',
+    'Manisa Magnesia','Bursa Zafer Plaza','Malatya Park','Samsun Piazza','İzmir Agora','Isparta İyaş Park','Ankara Vega Subayevleri',
+    'Eskişehir Espark AVM','Antalya Özdilek Park','Mersin Tarsu Avm','Bursa Özdilek Park','İstanbul Atlaspark','İstanbul City Center',
+    'İzmir Optimum','İzmir West Park','Kayseri Forum AVM','İzmir Novada Menemen Avm','Kahramanmaraş Piazza','İstanbul Maltepe Park',
+    'Balıkesir 10 Burda','Mardin Mova Park','Çanakkale Kipa Avm','Gaziantep Forum','İstanbul Venezia Mega Outlet','Hatay İskenderun Primemall',
+    'Manisa Turgutlu Alphard','Manisa Novada Akhisar','Ankara Forum','İstanbul Armoni Park AVM','İstanbul 212 Outlet',
+    'Diyarbakır Ceylan Karavil Park Avm','Sakarya Adapazarı Agora','Erzincan Park','İstanbul Canpark','Karaman Park','Sakarya Adapazarı Ada Avm',
+    'Tekirdağ Tekira AVM','Çankırı Yunus Avm','İstanbul Neomarin AVM','Mersin Sayapark AVM','İzmit 41 Burda','Ankara Antares AVM',
+    'Yozgat Novada','Adıyaman Park','Elazığ Park 23 Avm','Ordu Üniport','Denizli Çamlık','Artvin Artrium','Balıkesir Edremit Kipa',
+    'Giresun G-City Avm','Şanlıurfa Piazza','Aydın Kipa Avm','Bilecik Bozüyük AVM','Kütahya Sera Kütahya Avm','Afyon Park Avm','Van AVM',
+    'Kastamonu Barutçuoğlu AVM','Yalova Vega Avm','Konya Novaland','Bolu 14 Burda','Trabzon Rubenis Avm','Hatay İskenderun Forbes AVM',
+    'Ankara 365 Avm','Sivas İva Park','Bursa Anatolium','Muğla Pomelon AVM','Siirt Güres Cadde','Balıkesir Bandırma Liman AVM','Edirne Erasta Avm',
+    'Manisa Akhisar Tahir Ün Cadde','İzmir Point Bornova','Çorum AHL Park','İstanbul Metrogarden AVM','Aksaray Bediüzzaman Cadde',
+    'Osmaniye Park 328 Avm','Ordu Novada','Samsun Bafra Atatürk Bulvarı Cadde','Muğla Bodrum Oasis AVM','Antalya Agora','Erzurum MNG Avm',
+    'Rize Şimal Avm','Şırnak Cizre AVM','Amasya Park Avm','Sinop İtfaiye Cadde','Kocaeli Gebze Center','Uşak Festiva AVM','İstanbul Atirus Avm',
+    'Nevşehir Nissara','Adana 01 Burda','Tokat Novada','Karabük Kares Avm','Kırklareli Lüleburgaz 39 Burda','Reeder Store Samsun'
+  ];
 
-        function sortByFullOrder(leagueSet) {
-            return FULL_ORDER.filter(name => leagueSet.has(name));
-        }
+  // Her ligi FULL_ORDER'a göre sırala
+  function sortByOrder(set) { return FULL_ORDER.filter(name => set.has(name)); }
+  const platinumOrder = sortByOrder(PLATINUM_STORES);
+  const goldOrder = sortByOrder(GOLD_STORES);
+  const silverOrder = sortByOrder(SILVER_STORES);
+  const bronzeOrder = sortByOrder(BRONZE_STORES);
 
-        const platinumOrder = sortByFullOrder(PLATINUM_STORES);
-        const goldOrder = sortByFullOrder(GOLD_STORES);
-        const silverOrder = sortByFullOrder(SILVER_STORES);
-        const bronzeOrder = sortByFullOrder(BRONZE_STORES);
+  let stores = [];
+  function addOrdered(list, league) {
+    list.forEach(name => {
+      const rev = revenueData[name] || 0;
+      const oldRev = oldRevenueData[name] || 0;
+      let trend = 'same';
+      if (rev > oldRev) trend = 'up';
+      else if (rev < oldRev) trend = 'down';
+      stores.push({
+        name, league,
+        weeklyRevenue: rev,
+        weeklyTarget: TARGETS[league],
+        isAcademy: ACADEMY_STORES.has(name),
+        trend,
+        isTopLeader: name === topLeaderName
+      });
+    });
+  }
+  addOrdered(platinumOrder, 'A');
+  addOrdered(goldOrder, 'B');
+  addOrdered(silverOrder, 'C');
+  addOrdered(bronzeOrder, 'D');
 
-        let stores = [];
-        function addOrdered(list, league) {
-            list.forEach(name => {
-                const rev = revenueData[name] || 0;
-                const oldRev = oldRevenueData[name] || 0;
-                let trend = 'same';
-                if (rev > oldRev) trend = 'up';
-                else if (rev < oldRev) trend = 'down';
-                stores.push({
-                    name, league,
-                    weeklyRevenue: rev,
-                    weeklyTarget: TARGETS[league],
-                    isAcademy: ACADEMY_STORES.has(name),
-                    trend,
-                    isTopLeader: name === topLeaderName
-                });
-            });
-        }
-        addOrdered(platinumOrder, 'A');
-        addOrdered(goldOrder, 'B');
-        addOrdered(silverOrder, 'C');
-        addOrdered(bronzeOrder, 'D');
+  const platinum = stores.filter(s => s.league === 'A');
+  const gold = stores.filter(s => s.league === 'B');
+  const silver = stores.filter(s => s.league === 'C');
+  const bronze = stores.filter(s => s.league === 'D');
 
-        const platinum = stores.filter(s => s.league === 'A');
-        const gold = stores.filter(s => s.league === 'B');
-        const silver = stores.filter(s => s.league === 'C');
-        const bronze = stores.filter(s => s.league === 'D');
-
-        function renderLeague(containerId, storesArray, isTopLeague = false) {
-            const container = document.getElementById(containerId);
-            let html = '';
-            storesArray.forEach((s, idx) => {
-                const progress = s.weeklyTarget > 0 ? Math.min(100, (s.weeklyRevenue / s.weeklyTarget) * 100) : 0;
-                const achieved = progress >= 100;
-                let trendIcon = '';
-                if (s.trend === 'up') trendIcon = '<span class="text-emerald-500 text-sm font-bold">↑</span>';
-                else if (s.trend === 'down') trendIcon = '<span class="text-rose-500 text-sm font-bold">↓</span>';
-                else trendIcon = '<span class="text-gray-400 text-sm font-bold">→</span>';
-
-                const academyBadge = s.isAcademy ? ' 🎓' : '';
-                const isTop3 = idx < 3;
-                const rowBg = isTop3 ? 'bg-amber-50 border-amber-200' : 'bg-white';
-                const leaderClass = s.isTopLeader ? 'top-leader' : '';
-                const nameClass = isTop3 ? 'text-amber-700 font-semibold' : 'text-gray-700';
-
-                html += `
-                    <div class="store-row ${rowBg} ${leaderClass}">
-                        <div class="flex items-center gap-1 min-w-0 flex-1">
-                            <span class="text-xs md:text-sm font-medium truncate ${nameClass}" title="${s.name}">
-                                ${s.name}${academyBadge}
-                            </span>
-                            ${trendIcon}
-                        </div>
-                        <div class="flex items-center gap-2 sm:gap-3 progress-area">
-                            <span class="text-xs font-bold text-gray-800 text-right">%${progress.toFixed(0)}</span>
-                            <div class="w-12 md:w-16 bg-gray-200 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-blue-500 h-1.5 rounded-full" style="width:${progress}%"></div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
-        renderLeague('platinumList', platinum, true);
-        renderLeague('goldList', gold, true);
-        renderLeague('silverList', silver, false);
-        renderLeague('bronzeList', bronze, false);
-
-        // KPI
-        const achievers = stores.filter(s => s.weeklyTarget > 0 && (s.weeklyRevenue / s.weeklyTarget) >= 1).length;
-        const avgProgress = stores.length ? stores.reduce((a,b)=>a+(b.weeklyTarget>0?(b.weeklyRevenue/b.weeklyTarget)*100:0),0)/stores.length : 0;
-        document.getElementById('kpiContainer').innerHTML = `
-            <div class="bg-white rounded-2xl p-3 md:p-5 card-shadow border-soft flex justify-between items-center">
-                <div><div class="text-gray-500 text-xs md:text-sm font-medium uppercase">Hedefi Aşan</div><div class="text-2xl md:text-3xl font-bold text-gray-800">${achievers} / ${stores.length}</div></div>
-                <div class="text-2xl md:text-3xl text-emerald-500">🎯</div>
+  // Lig listelerini render et
+  function renderLeague(containerId, storesArray) {
+    const container = document.getElementById(containerId);
+    let html = '';
+    storesArray.forEach((s, idx) => {
+      const progress = s.weeklyTarget > 0 ? Math.min(100, (s.weeklyRevenue / s.weeklyTarget) * 100) : 0;
+      const trendIcon = s.trend === 'up' ? '<span class="text-emerald-500 text-sm font-bold">↑</span>' :
+                       (s.trend === 'down' ? '<span class="text-rose-500 text-sm font-bold">↓</span>' : '<span class="text-gray-400 text-sm font-bold">→</span>');
+      const academyBadge = s.isAcademy ? ' 🎓' : '';
+      const isTop3 = idx < 3;
+      const rowBg = isTop3 ? 'bg-amber-50 border-amber-200' : 'bg-white';
+      const leaderClass = s.isTopLeader ? 'top-leader' : '';
+      const nameClass = isTop3 ? 'text-amber-700 font-semibold' : 'text-gray-700';
+      html += `
+        <div class="store-row ${rowBg} ${leaderClass}">
+          <div class="flex items-center gap-1 min-w-0 flex-1">
+            <span class="text-xs md:text-sm font-medium truncate ${nameClass}" title="${s.name}">
+              ${s.name}${academyBadge}
+            </span>
+            ${trendIcon}
+          </div>
+          <div class="flex items-center gap-2 sm:gap-3 progress-area">
+            <span class="text-xs font-bold text-gray-800 text-right">%${progress.toFixed(0)}</span>
+            <div class="w-12 md:w-16 bg-gray-200 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-blue-500 h-1.5 rounded-full" style="width:${progress}%"></div>
             </div>
-            <div class="bg-white rounded-2xl p-3 md:p-5 card-shadow border-soft flex justify-between items-center">
-                <div><div class="text-gray-500 text-xs md:text-sm font-medium uppercase">Ort. Gerçekleşme</div><div class="text-2xl md:text-3xl font-bold text-gray-800">%${avgProgress.toFixed(1)}</div></div>
-                <div class="text-2xl md:text-3xl text-purple-500">📊</div>
-            </div>
-        `;
-    })();
+          </div>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
+  }
+
+  renderLeague('platinumList', platinum);
+  renderLeague('goldList', gold);
+  renderLeague('silverList', silver);
+  renderLeague('bronzeList', bronze);
+
+  // MVP panelini oluştur (her lig için en yüksek yüzde ve hedefi aşan sayısı)
+  function buildMVP() {
+    const leagues = { 'A': platinum, 'B': gold, 'C': silver, 'D': bronze };
+    const leagueInfo = {
+      'A': { name: 'Platin', icon: '💎', color: '#94a3b8' },
+      'B': { name: 'Altın', icon: '🥇', color: '#eab308' },
+      'C': { name: 'Gümüş', icon: '🥈', color: '#94a3b8' },
+      'D': { name: 'Bronz', icon: '🥉', color: '#b45309' }
+    };
+    let mvpHTML = '';
+    Object.entries(leagues).forEach(([key, arr]) => {
+      // En yüksek hedef gerçekleştirme yüzdesine sahip mağazayı bul
+      let best = arr.reduce((prev, curr) => {
+        const p = curr.weeklyTarget > 0 ? (curr.weeklyRevenue / curr.weeklyTarget) * 100 : 0;
+        const prevP = prev ? (prev.weeklyTarget > 0 ? (prev.weeklyRevenue / prev.weeklyTarget) * 100 : 0) : -1;
+        return p > prevP ? curr : prev;
+      }, null);
+      const bestProgress = best ? (best.weeklyTarget > 0 ? (best.weeklyRevenue / best.weeklyTarget) * 100 : 0) : 0;
+      const achievers = arr.filter(s => s.weeklyTarget > 0 && (s.weeklyRevenue / s.weeklyTarget) >= 1).length;
+      const info = leagueInfo[key];
+      mvpHTML += `
+        <div class="bg-white rounded-2xl p-3 card-shadow border-soft" style="border-left: 5px solid ${info.color};">
+          <div class="flex items-center gap-2 text-sm md:text-base font-bold text-gray-700">
+            <span class="text-xl">${info.icon}</span> ${info.name} MVP
+          </div>
+          <div class="mt-1 text-xs md:text-sm">
+            <span class="font-semibold text-gray-800 truncate block">${best ? best.name : '-'}</span>
+            <span class="text-blue-600 font-bold">%${bestProgress.toFixed(0)}</span>
+          </div>
+
+          <div class="mt-2 text-[10px] md:text-xs text-gray-500">
+            🎯 <span class="font-bold text-emerald-600">${achievers}</span> mağaza hedefi aştı
+          </div>
+        </div>
+      `;
+    });
+    document.getElementById('mvpContainer').innerHTML = mvpHTML;
+  }
+  buildMVP();
+
+  // Genel ortalama gerçekleşme yüzdesi
+  const avgProgress = stores.length ? stores.reduce((a,b)=>a+(b.weeklyTarget>0?(b.weeklyRevenue/b.weeklyTarget)*100:0),0)/stores.length : 0;
+  document.getElementById('kpiContainer').innerHTML = `
+    <div class="bg-white rounded-2xl p-3 md:p-5 card-shadow border-soft flex justify-between items-center">
+      <div><div class="text-gray-500 text-xs md:text-sm font-medium uppercase">Ort. Hedef Gerçekleşme (Tüm Ligler)</div><div class="text-2xl md:text-3xl font-bold text-gray-800">%${avgProgress.toFixed(1)}</div></div>
+      <div class="text-2xl md:text-3xl text-purple-500">📊</div>
+    </div>
+  `;
+
+})();
 </script>
 </body>
 </html>
